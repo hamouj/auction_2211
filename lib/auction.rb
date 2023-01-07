@@ -53,8 +53,7 @@ class Auction
   end
 
   def bidder_info
-    outer_hash = Hash.new {|hash, key| hash[key] = {}}
-    inner_hash = Hash.new    
+    outer_hash = Hash.new {|hash, key| hash[key] = {}}  
 
     bidders.each do |bidder|
       outer_hash[bidder]
