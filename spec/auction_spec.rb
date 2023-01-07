@@ -185,10 +185,13 @@ describe Auction do
   end
 
   describe '#date' do
-    it 'returns a string representation of the date' do
+    it 'returns a string representation of a past date' do
       allow(auction).to receive(:date).and_return('02/26/2022')
-
       expect(auction.date).to eq('02/26/2022')
+    end
+
+    it 'returns a string representation of the current date' do
+      expect(auction.date).to include('2023')
     end
   end
 end
