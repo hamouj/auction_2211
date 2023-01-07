@@ -25,7 +25,7 @@ describe Auction do
     end
   end
 
-  describe '#add_items' do
+  describe '#add_item()' do
     it 'can add items' do
       auction.add_item(item1)
       auction.add_item(item2)
@@ -34,7 +34,7 @@ describe Auction do
     end
   end
 
-  describe '#item_names' do
+  describe '#item_names()' do
     it 'lists the names of the items' do
       auction.add_item(item1)
       auction.add_item(item2)
@@ -43,7 +43,7 @@ describe Auction do
     end
   end
 
-  describe '#add_bid' do
+  describe '#add_bid()' do
     it 'adds bids to items' do
       auction.add_item(item1)
       auction.add_item(item2)
@@ -129,7 +129,7 @@ describe Auction do
     end
   end
 
-  describe '#items_by_bidder' do
+  describe '#items_by_bidder()' do
     it 'lists items that a bidder has a put a bid in for' do
       auction.add_item(item1)
       auction.add_item(item2)
