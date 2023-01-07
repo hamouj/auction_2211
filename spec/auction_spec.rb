@@ -213,4 +213,31 @@ describe Auction do
       expect(item1.bids).to eq(expected_hash)
     end
   end
+
+  describe '#close_auction' do
+    it 'closes bidding and sells items to attendees' do
+      auction.add_item(item1)
+      auction.add_item(item2)
+      auction.add_item(item3)
+      auction.add_item(item4)
+      auction.add_item(item5)
+
+      item1.add_bid(attendee2, 20)
+      item1.add_bid(attendee1, 22)
+      item3.add_bid(attendee1, 15)
+      item4.add_bid(attendee3, 50)
+      item5.add_bid(attendee1, 25)
+      item5.add_bid(attendee2, 20)
+
+      expected_hash = {
+        item1 => attendee 1
+        item2 => 'Not Sold'
+        item3 => attendee 1
+        item4 => attendee 3
+        item5 => attendee 2
+      }
+
+      expect(auction.close_auction).to eq(expected_hash)
+    end
+  end
 end
