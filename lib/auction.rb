@@ -38,4 +38,26 @@ class Auction
     end
     bidders.uniq
   end
+
+  def items_by_bidder(bidder)
+    items_for_bidder = []
+    @items.each do |item|
+      item.bids.each_key do |attendee|
+        items_for_bidder << item if attendee == bidder
+      end
+    end
+    items_for_bidder
+  end
+
+  def bidder_info
+    outer_hash = Hash.new {|hash, key| hash[key] = {}}
+    inner_hash = Hash.new    
+
+    bidders.each do |bidder|
+      outer_hash[bidder]
+      outer_hash[bidder][:budget] = bidder.budget
+      outer_hash[bidder][:items] = items_by_bidder(bidder)
+    end
+    outer_hash
+  end
 end
