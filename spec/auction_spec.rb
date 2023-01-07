@@ -183,4 +183,12 @@ describe Auction do
       expect(auction.bidder_info).to eq(expected_hash)
     end
   end
+
+  describe '#date' do
+    it 'returns a string representation of the date' do
+      allow(auction).to receive(:date).and_return('02/26/2022')
+
+      expect(auction.date).to eq('02/26/2022')
+    end
+  end
 end
