@@ -194,4 +194,23 @@ describe Auction do
       expect(auction.date).to include('2023')
     end
   end
+
+  describe '#close_bidding' do
+    it 'stops an item from accepting additional bids' do
+      auction.add_item(item1)
+
+      item1.add_bid(attendee2, 20)
+      item1.add_bid(attendee1, 22)
+
+      item1.close_bidding
+      item1.add_bid(attendee3, 30)
+
+      expected_hash = {
+        attendee2 => 20,
+        attendee1 => 22
+      }
+
+      expect(item1.bids).to eq(expected_hash)
+    end
+  end
 end
