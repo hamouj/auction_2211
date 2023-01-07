@@ -129,6 +129,25 @@ describe Auction do
     end
   end
 
+  describe '#items_by_bidder' do
+    it 'lists items that a bidder has a put a bid in for' do
+      auction.add_item(item1)
+      auction.add_item(item2)
+      auction.add_item(item3)
+      auction.add_item(item4)
+      auction.add_item(item5)
+
+      item1.add_bid(attendee2, 20)
+      item1.add_bid(attendee1, 22)
+      item4.add_bid(attendee3, 50)
+      item3.add_bid(attendee2, 15)
+
+      expect(auction.items_by_bidder(attendee1)).to eq([item1])
+      expect(auction.items_by_bidder(attendee2)).to eq([item1, item3])
+      expect(auction.items_by_bidder(attendee3)).to eq([item4])
+    end
+  end
+  
   describe '#bidder_info' do
     it 'returns a hash with keys that are attendees, and values that are a hash with that attendees budget and an array of items that attendee has bid on' do
       auction.add_item(item1)
