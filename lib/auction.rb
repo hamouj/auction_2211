@@ -1,8 +1,11 @@
+require 'date'
+
 class Auction
   attr_reader :items
 
   def initialize
     @items = []
+    @date = Date.today.to_s.split('-')
   end
 
   def add_item(item)
@@ -59,5 +62,9 @@ class Auction
       outer_hash[bidder][:items] = items_by_bidder(bidder)
     end
     outer_hash
+  end
+
+  def date
+    "#{@date[1]}/#{@date[2]}/#{@date[0]}"
   end
 end
